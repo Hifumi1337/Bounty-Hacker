@@ -182,6 +182,7 @@ Shoutout to [Sevuhl](https://tryhackme.com/p/Sevuhl) for creating such a cool ro
 
 This room is based on an anime called **Cowboy Bebop** (One of my favorites!). You can check it out [here](https://www.imdb.com/title/tt0213338/).
 
+<!--
 ## YouTube Version
 
-I will be posting a video covering this writeup very soon!
+I will be posting a video covering this writeup very soon! -->
