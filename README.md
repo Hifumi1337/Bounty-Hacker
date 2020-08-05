@@ -10,7 +10,7 @@ You talked a big game about being the most elite hacker in the solar system. Pro
 
 # Task 1
 
-Deploy the machine by clicking the _Deploy_ button.
+Deploy the machine by clicking the **Deploy** button.
 
 # Task 2
 
