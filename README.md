@@ -1,5 +1,10 @@
 # Bounty Hacker
 
+# NOTE
+I now have a blog where I post all of my write-ups, updates, and interesting topics.
+
+You can find the URL for this writeup here: https://hifumi1337.github.io/bounty-hacker-writeup/
+
 ## Disclaimer
 
 This writeup is for a room located on **TryHackMe**. If you would like to attempt the room, please visit it [here](https://tryhackme.com/room/cowboyhacker).
