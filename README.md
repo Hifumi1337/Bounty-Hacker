@@ -3,7 +3,7 @@
 # NOTE
 I now have a blog where I post all of my write-ups, updates, and interesting topics.
 
-You can find the URL for this writeup here: https://hifumi1337.github.io/bounty-hacker-writeup/
+You can find the URL for this writeup here: https://blog.hifumi1337.io/bounty-hacker-writeup/
 
 ## Disclaimer
 
