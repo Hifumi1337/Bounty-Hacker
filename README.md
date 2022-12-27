@@ -1,13 +1,13 @@
 # Bounty Hacker
 
 # NOTE
-I now have a blog where I post all of my write-ups, updates, and interesting topics.
+I now have a blog where I post all of my writeups, updates, and interesting topics.
 
-You can find the URL for this writeup here: https://blog.hifumi1337.io/bounty-hacker-writeup/
+You can find the URL for this write-up here: https://blog.azazelm3dj3d.com/bounty-hacker-writeup/
 
 ## Disclaimer
 
-This writeup is for a room located on **TryHackMe**. If you would like to attempt the room, please visit it [here](https://tryhackme.com/room/cowboyhacker).
+This write-up is for a room located on **TryHackMe**. If you would like to attempt the room, please visit it [here](https://tryhackme.com/room/cowboyhacker).
 
 ## Description
 
@@ -19,7 +19,7 @@ Deploy the machine by clicking the **Deploy** button.
 
 # Task 2
 
-After the machine has finished booting up, run the following command to reveal the open ports on the network (If using personal Linux machine, remember to use **OpenVPN**):
+After the machine has finished booting up, run the following command to reveal the open ports on the network (If using a personal Linux machine, remember to use **OpenVPN**):
 
 ```
 $ nmap -sV -sC -Pn
@@ -116,7 +116,7 @@ The easiest way to accomplish this is by using **linPEAS** & a **python server**
 $ sudo python3 -m http.server 80
 ```
 
-Now to actually obtain the script. We need to create a directory (I called mine LinEnum), wget the actual linPEAS script from the GitHub repository, and then transfer the file over to the target machine to run the exploit.
+Now to obtain the script. We need to create a directory (I called mine LinEnum), wget the actual linPEAS script from the GitHub repository, and then transfer the file over to the target machine to run the exploit.
 
 Here are the commands I used (This can be done multiple ways):
 
@@ -126,7 +126,7 @@ $ cd LinEnum
 $ wget "https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh"
 ```
 
-Now we need to move back over to the users terminal, and we now have it saved on our server, so let's move it over to the target machine (Remember to use this command in the target's terminal).
+Now we need to move back over to the user's terminal, and we now have it saved on our server, so let's move it over to the target machine (Remember to use this command in the target's terminal).
 
 Note: If using the THM cloud Kali Linux machine, the PrivateIP is available [here](https://tryhackme.com/my-machine).
 
@@ -155,7 +155,7 @@ $ cd /etc/update-motd.d
 $ ls -la
 ```
 
-This will show us that the **00-header** file we found is actually owned by root.
+This will show us that the **00-header** file we found is owned by root.
 
 The easiest way to do this is by using **nano**:
 
@@ -173,7 +173,7 @@ cat /root/root.txt
 
 **ctrl + x to save the file**
 
-After completing all the above tasks, all we have to do is log out of the ssh shell and log back in. You'll see the **root.txt** flag is located directly in the login terminal screen!
+After completing all the above tasks, all we have to do is log out of the ssh shell and log back in. You'll see the **root.txt** flag is located directly on the login terminal screen!
 
 ```
 $ ssh ${user}@${MachineIP}
@@ -186,8 +186,3 @@ Shoutout to [Sevuhl](https://tryhackme.com/p/Sevuhl) for creating such a cool ro
 # Extra
 
 This room is based on an anime called **Cowboy Bebop** (One of my favorites!). You can check it out [here](https://www.imdb.com/title/tt0213338/).
-
-<!--
-## YouTube Version
-
-I will be posting a video covering this writeup very soon! -->
