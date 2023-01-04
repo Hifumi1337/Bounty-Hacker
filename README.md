@@ -3,7 +3,7 @@
 # NOTE
 I now have a blog where I post all of my writeups, updates, and interesting topics.
 
-You can find the URL for this write-up here: https://blog.azazelm3dj3d.com/bounty-hacker-writeup/
+You can find the URL for this write-up here: https://blog.azazelm3dj3d.com/post/bounty-hacker-writeup/
 
 ## Disclaimer
 
