@@ -1,10 +1,5 @@
 # Bounty Hacker
 
-# NOTE
-I now have a blog where I post all of my writeups, updates, and interesting topics.
-
-You can find the URL for this write-up here: https://blog.azazelm3dj3d.com/post/bounty-hacker-writeup/
-
 ## Disclaimer
 
 This write-up is for a room located on **TryHackMe**. If you would like to attempt the room, please visit it [here](https://tryhackme.com/room/cowboyhacker).
